@@ -1,6 +1,8 @@
-// src/components/molecules/BarberCard.tsx
+'use client'
+
 import { PhotoFrame } from '@/src/components/atoms/PhotoFrame'
 import { InstagramIcon } from '@/src/components/atoms/SocialIcons'
+import { useTouch } from '@/src/hooks/useTouch'
 
 interface BarberCardProps {
   name: string
@@ -11,6 +13,8 @@ interface BarberCardProps {
 }
 
 export function BarberCard({ name, specialty, bio, imageSrc, instagram }: BarberCardProps) {
+  const isTouch = useTouch();
+
   return (
     <div className="group flex flex-col gap-0 overflow-hidden">
 
@@ -23,8 +27,8 @@ export function BarberCard({ name, specialty, bio, imageSrc, instagram }: Barber
           grayscaleHover
         />
 
-        {/* Overlay Instagram — aparece en hover */}
-        {instagram && (
+        {/* Overlay Instagram — aparece en hover (SOLO EN PC) */}
+        {instagram && !isTouch && (
           <a
             href={`https://instagram.com/${instagram}`}
             target="_blank"
@@ -72,21 +76,22 @@ export function BarberCard({ name, specialty, bio, imageSrc, instagram }: Barber
           </p>
         )}
 
-        {/* Pie: IG handle si existe */}
+        {/* Pie: IG handle - Adaptado para táctil */}
         {instagram && (
           <a
             href={`https://instagram.com/${instagram}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="
-              inline-flex items-center gap-1.5 mt-1
-              font-sans text-[10px] text-[var(--color-foreground)] opacity-40
-              hover:opacity-80 hover:text-[var(--color-primary)]
-              transition-all duration-200
-            "
+            className={
+              isTouch 
+              ? "mt-2 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-br from-[#833AB4]/10 via-[#FD1D1D]/10 to-[#F77737]/10 border border-[#FD1D1D]/20 text-[var(--color-foreground)] transition-colors self-start"
+              : "inline-flex items-center gap-1.5 mt-1 font-sans text-[10px] text-[var(--color-foreground)] opacity-40 hover:opacity-80 hover:text-[var(--color-primary)] transition-all duration-200"
+            }
           >
-            <InstagramIcon size={11} />
-            @{instagram}
+            <div className={isTouch ? "text-[#FD1D1D]" : ""}>
+              <InstagramIcon size={isTouch ? 14 : 11} />
+            </div>
+            <span className={isTouch ? "font-sans text-[11px] font-bold" : ""}>@{instagram}</span>
           </a>
         )}
       </div>

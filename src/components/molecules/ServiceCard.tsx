@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Share2, ArrowRight, Link as LinkIcon, Check, X } from 'lucide-react'
 import { BARBARO_INFO, SITE_URL } from '@/src/lib/constants'
+import { useTouch } from '@/src/hooks/useTouch'
 
 import { WhatsAppIcon, FacebookIcon } from '@/src/components/atoms/SocialIcons'
 
@@ -26,6 +27,7 @@ export function ServiceCard({
   features = [],
   isPremium = false,
 }: ServiceCardProps) {
+  const isTouch = useTouch()
   const [shareOpen, setShareOpen] = useState(false)
   const [copied, setCopied] = useState(false)
   const shareMenuRef = useRef<HTMLDivElement>(null)
@@ -137,11 +139,12 @@ export function ServiceCard({
           alt={`Servicio: ${name}`}
           fill
           className={`
-            object-cover object-center
-            transition-all duration-700 ease-out
-            grayscale contrast-125 brightness-75
-            group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-100
-            @media (hover: none) { grayscale-[50%] brightness-90 }
+            object-cover object-center transition-all duration-700 ease-out
+            ${
+              isTouch
+                ? "grayscale-[0.5] brightness-90"
+                : "grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:scale-105 group-hover:brightness-100"
+            }
           `}
         />
         
