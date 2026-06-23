@@ -1,13 +1,20 @@
+// src/domain/service.ts
+import type { ImageFocalPoint } from './image'
+
 export interface Service {
   slug: string;
   title: string;
   description: string;
   price: string;
-  duration: string;
+  duration?: string;
   category: string;
   order: number;
   image?: string;
+  imageAlt?: string;
+  imageFocalPoint?: ImageFocalPoint;
+  isPremium?: boolean;
   features?: string[];
+  relatedCuts?: string[];
   content?: string;
 }
 

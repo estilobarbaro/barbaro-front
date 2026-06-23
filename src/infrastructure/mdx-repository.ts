@@ -3,9 +3,15 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Service, ServiceCategory } from '@/src/domain/service';
 import { Partner } from '@/src/domain/partner';
+import { Cut } from '@/src/domain/cut';
 
 const SERVICES_PATH = path.join(process.cwd(), 'src/content/services');
 const PARTNERS_PATH = path.join(process.cwd(), 'src/content/partners');
+const GALLERY_PATH  = path.join(process.cwd(), 'src/content/gallery');
+
+// ─────────────────────────────────────────────────────────────
+// SERVICES
+// ─────────────────────────────────────────────────────────────
 
 export const getServicesByCategory = (): ServiceCategory[] => {
   if (!fs.existsSync(SERVICES_PATH)) return [];
@@ -28,7 +34,11 @@ export const getServicesByCategory = (): ServiceCategory[] => {
         category: data.category,
         order: data.order || 0,
         image: data.image,
+        imageAlt: data.imageAlt,
+        imageFocalPoint: data.imageFocalPoint ?? 'top',
+        isPremium: data.isPremium ?? false,
         features: data.features || [],
+        relatedCuts: data.relatedCuts || [],
         content,
       } as Service;
     });
@@ -72,6 +82,47 @@ export const getServicesByCategory = (): ServiceCategory[] => {
     services: categoriesMap[catId].sort((a, b) => a.order - b.order)
   }));
 };
+
+// ─────────────────────────────────────────────────────────────
+// GALLERY (cuts)
+// ─────────────────────────────────────────────────────────────
+
+export const getGallery = (): Cut[] => {
+  if (!fs.existsSync(GALLERY_PATH)) return [];
+
+  const fileNames = fs.readdirSync(GALLERY_PATH);
+  const cuts: Cut[] = fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '');
+      const fullPath = path.join(GALLERY_PATH, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data, content } = matter(fileContents);
+
+      return {
+        slug,
+        name: data.name,
+        category: data.category,
+        tags: data.tags || [],
+        imageSrc: data.imageSrc,
+        imageAlt: data.imageAlt,
+        imageFocalPoint: data.imageFocalPoint ?? 'top',
+        featured: data.featured ?? false,
+        order: data.order || 0,
+        content,
+      } as Cut;
+    });
+
+  return cuts.sort((a, b) => a.order - b.order);
+};
+
+/** Returns only featured cuts, sorted by order */
+export const getFeaturedCuts = (): Cut[] =>
+  getGallery().filter((c) => c.featured);
+
+// ─────────────────────────────────────────────────────────────
+// PARTNERS
+// ─────────────────────────────────────────────────────────────
 
 export const getPartners = (): Partner[] => {
   if (!fs.existsSync(PARTNERS_PATH)) return [];

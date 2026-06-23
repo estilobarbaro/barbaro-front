@@ -1,4 +1,6 @@
 // src/components/organisms/Hero.tsx
+// Rediseñado con fondo-barberia.webp — imagen a color con LEDs dorados.
+// El overlay respeta los tonos ambar originales de la barbería.
 import { GrainOverlay } from '@/src/components/atoms/GrainOverlay'
 import { GoldLine } from '@/src/components/atoms/GoldLine'
 import { ButtonCTA } from '@/src/components/atoms/ButtonCTA'
@@ -7,19 +9,20 @@ import Image from 'next/image'
 export function Hero() {
   return (
     <GrainOverlay className="relative min-h-[85vh] flex items-center">
-      {/* Imagen de fondo */}
+      {/* Imagen de fondo — fondo-barberia.webp a color */}
       <Image
-        src="/hero-barbaro.webp"
-        alt=""
+        src="/images/hero/fondo-barberia.webp"
+        alt="Interior de Estilo Bárbaro Barber Suite — Huancayo, Perú"
         fill
         priority
-        className="object-cover object-center grayscale contrast-125"
+        sizes="100vw"
+        className="object-cover object-center"
         aria-hidden="true"
       />
 
-      {/* Overlay dark graduated — PATRÓN HEREDABLE P01 */}
+      {/* Overlay dark graduated — preserva los LEDs dorados del fondo */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"
+        className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/85"
         aria-hidden="true"
       />
 

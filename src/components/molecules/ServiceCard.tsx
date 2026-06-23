@@ -14,6 +14,8 @@ interface ServiceCardProps {
   description: string
   price: string | number
   imageSrc: string
+  imageAlt?: string
+  imageFocalPoint?: 'top' | 'center' | 'bottom' | 'left' | 'right'
   features?: string[]
   isPremium?: boolean
 }
@@ -24,6 +26,8 @@ export function ServiceCard({
   description,
   price,
   imageSrc,
+  imageAlt,
+  imageFocalPoint = 'center',
   features = [],
   isPremium = false,
 }: ServiceCardProps) {
@@ -136,10 +140,11 @@ export function ServiceCard({
 
         <Image
           src={imageSrc}
-          alt={`Servicio: ${name}`}
+          alt={imageAlt ?? `Servicio: ${name} — Estilo Bárbaro`}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className={`
-            object-cover object-center transition-all duration-700 ease-out
+            object-cover object-${imageFocalPoint} transition-all duration-700 ease-out
             ${
               isTouch
                 ? "grayscale-[0.5] brightness-90"

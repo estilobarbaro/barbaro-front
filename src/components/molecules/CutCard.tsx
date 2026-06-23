@@ -4,17 +4,20 @@ import Image from 'next/image'
 interface CutCardProps {
   name: string
   imageSrc: string
+  imageAlt?: string
+  imageFocalPoint?: 'top' | 'center' | 'bottom' | 'left' | 'right'
   category?: string
 }
 
-export function CutCard({ name, imageSrc, category }: CutCardProps) {
+export function CutCard({ name, imageSrc, imageAlt, imageFocalPoint = 'top', category }: CutCardProps) {
   return (
     <div className="group relative overflow-hidden aspect-square cursor-pointer">
       <Image
         src={imageSrc}
-        alt={`Corte ${name}`}
+        alt={imageAlt ?? `Corte ${name} — Estilo Bárbaro`}
         fill
-        className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        className={`object-cover object-${imageFocalPoint} transition-transform duration-500 group-hover:scale-105`}
       />
       {/* Overlay */}
       <div
