@@ -26,7 +26,7 @@ export function PartnerCarousel({ partners }: PartnerCarouselProps) {
   const infinitePartners = [...expandedPartners, ...expandedPartners];
 
   return (
-    <div className="w-full bg-background/50 border-y border-white/5 py-10 lg:py-14 overflow-hidden relative group">
+    <div className="w-full section-graphite border-y border-primary/10 py-10 lg:py-14 overflow-hidden relative group">
       {/* Aurora de fondo sutil */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(223,147,54,0.08),transparent_50%)] pointer-events-none" />
       

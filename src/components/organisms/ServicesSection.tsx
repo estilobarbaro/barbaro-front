@@ -8,7 +8,7 @@ import { PREMIUM_PACKAGES, CORE_SERVICES } from '@/src/lib/services'
 
 export function ServicesSection() {
   return (
-    <section id="servicios" className="bg-[var(--color-background)] py-12 lg:py-16">
+    <section id="servicios" className="section-ivory py-12 lg:py-16">
       <div className="max-w-6xl mx-auto px-4 lg:px-6 flex flex-col gap-12">
         
         {/* Intro */}
@@ -22,7 +22,7 @@ export function ServicesSection() {
         {/* TIER 1: Paquetes Premium */}
         <div className="flex flex-col gap-6">
           <motion.div variants={fadeUp} initial="initial" whileInView="animate" viewport={{ once: true }}>
-             <h3 className="font-sans text-xs font-bold uppercase tracking-[0.3em] text-[var(--color-primary)] border-b border-[var(--color-border)] pb-4">
+             <h3 className="font-sans text-xs font-bold uppercase tracking-[0.3em] text-[var(--color-primary)] border-b border-[var(--color-border)] border-[var(--color-border-light)] pb-4">
                Experiencias Premium
              </h3>
           </motion.div>

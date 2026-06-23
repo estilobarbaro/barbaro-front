@@ -122,7 +122,7 @@ export default function RootLayout({
     "slogan": "Donde el estilo alcanza la elegancia",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Frente al Parque de los Sombreros",
+      "streetAddress": "Jr. Sebastián Lorente, Pasaje 03 de Octubre Nº 232",
       "addressLocality": "El Tambo, Huancayo",
       "addressRegion": "Junín",
       "postalCode": "12000",
@@ -150,7 +150,9 @@ export default function RootLayout({
     ],
     "sameAs": [
       BARBARO_INFO.social.facebook,
-      BARBARO_INFO.social.tiktok
+      BARBARO_INFO.social.instagram,
+      BARBARO_INFO.social.tiktok,
+      BARBARO_INFO.website
     ],
     "priceRange": "$$$",
     "amenityFeature": [

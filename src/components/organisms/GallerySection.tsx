@@ -25,7 +25,7 @@ export function GallerySection() {
   const filtered = active === 'Todos' ? CUTS : CUTS.filter((c) => c.category === active)
 
   return (
-    <section id="galeria" className="bg-[var(--color-background)] py-12 lg:py-16">
+    <section id="galeria" className="section-graphite py-12 lg:py-16">
       <div className="max-w-6xl mx-auto px-4 lg:px-6 flex flex-col gap-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <SectionHeader label="Nuestro trabajo" title="Galería de Cortes" />

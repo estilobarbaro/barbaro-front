@@ -1,21 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #ffffff;
-  --color-primary: #df9336;
-  --color-primary-foreground: #0a0a0a;
-  --color-secondary: #1c1c1c;
-  --color-secondary-foreground: #ffffff;
-  --color-accent: #d8b46e;
-  --color-accent-foreground: #0a0a0a;
-  --color-muted: #4a4a4a;
-  --color-muted-foreground: #7a8996;
-  --color-border: #2a2a2a;
-  --color-gold-dark: #957e54;
+  /* ── BACKGROUNDS — Sistema de Capas Bárbaro 2026 ── */
+  --color-background:           #312b2b;  /* Deep Espresso — BG global (reemplaza negro frío) */
+  --color-background-light:     #f5f2eb;  /* Ivory Smoke — secciones hero, modo claro */
+  --color-surface:              #3d3535;  /* Espresso elevado — cards sobre BG */
+  --color-overlay:              #1d1918;  /* Oscuro máximo — overlays sobre fotos */
 
-  --font-sans: var(--font-montserrat), sans-serif;
-  --font-serif: var(--font-lora), serif;
+  /* ── FOREGROUNDS / TEXTO ── */
+  --color-foreground:           #f5f2eb;  /* Ivory Smoke — texto principal (reemplaza blanco puro) */
+  --color-foreground-dark:      #312b2b;  /* Deep Espresso — texto sobre fondos claros */
+  --color-muted-foreground:     #bfb3b7;  /* Ash Rose — subtítulos, labels, texto muted */
+
+  /* ── PRIMARIO — Classic Gold ── */
+  --color-primary:              #df9336;  /* Classic Gold — CTA, logo, corona */
+  --color-primary-foreground:   #312b2b;  /* Deep Espresso sobre botón dorado */
+
+  /* ── ACENTO — Amber Bronze ── */
+  --color-accent:               #c09457;  /* Amber Bronze — hover, detalles artesanales */
+  --color-accent-foreground:    #f5f2eb;  /* Ivory sobre bronce */
+
+  /* ── SECUNDARIO — Graphite Ink ── */
+  --color-secondary:            #333331;  /* Graphite Ink — fondos alternos, footers */
+  --color-secondary-foreground: #bfb3b7;  /* Ash Rose sobre grafito */
+
+  /* ── SISTEMA UI ── */
+  --color-muted:                #3d3535;  /* Espresso elevado — inputs, fondos de form */
+  --color-border:               #4a3f3f;  /* Borde cálido sobre espresso */
+  --color-border-light:         #d4c9c9;  /* Borde sobre fondos claros */
+  --color-gold-dark:            #957e54;  /* Oro envejecido — detalles sutiles */
+
+  /* ── ALIASES SEMÁNTICOS ── */
+  --color-ivory:                #f5f2eb;
+  --color-espresso:             #312b2b;
+  --color-ash:                  #bfb3b7;
+  --color-bronze:               #c09457;
+  --color-graphite:             #333331;
+  --color-gold:                 #df9336;
+
+  /* ── TIPOGRAFÍA ── */
+  --font-sans:    var(--font-montserrat), sans-serif;
+  --font-serif:   var(--font-lora), serif;
   --font-display: var(--font-abril), serif;
 }
 
@@ -39,11 +64,133 @@
 }
 
 @layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
+}
+
+/* ══════════════════════════════════════════════════════
+   SISTEMA DE MODOS DE SECCIÓN — Manual de Marca Bárbaro 2026
+   Tres modos: Espresso · Graphite · Ivory
+   Un solo archivo, cero cambios en componentes.
+   ══════════════════════════════════════════════════════ */
+
+/* ─── MODO ESPRESSO (oscuro cálido) ─────────────────── */
+/* El modo por defecto. Hereda el body. Sin overrides. */
+.section-espresso {
+  background-color: var(--color-background);   /* #312b2b */
+  color: var(--color-foreground);              /* #f5f2eb */
+}
+
+/* ─── MODO GRAPHITE (transición/bisagra) ────────────── */
+/* Oscuro pero ligeramente diferente al Espresso.       */
+.section-graphite {
+  background-color: var(--color-secondary);    /* #333331 */
+  color: var(--color-foreground);              /* #f5f2eb */
+}
+/* Graphite: ajuste sutil de la superficie de cards     */
+.section-graphite [class*="bg-"][class*="secondary"] {
+  background-color: rgba(49, 43, 43, 0.4);
+}
+
+/* ─── MODO IVORY (pergamino — respiro y conversión) ─── */
+.section-ivory {
+  background-color: var(--color-background-light); /* #f5f2eb */
+  color: var(--color-foreground-dark);             /* #312b2b */
+}
+
+/* → TIPOGRAFÍA: Invertir todos los textos             */
+/* Títulos display (font-display, h1-h6) */
+.section-ivory h1,
+.section-ivory h2,
+.section-ivory h3,
+.section-ivory h4,
+.section-ivory h5,
+.section-ivory h6 {
+  color: var(--color-foreground-dark);
+}
+/* Texto body */
+.section-ivory p {
+  color: var(--color-foreground-dark);
+  opacity: 0.82;
+}
+/* Labels y spans con text-white */
+.section-ivory span {
+  color: inherit;
+}
+
+/* → TAILWIND UTILITIES: text-white / text-white/* variants */
+/* Afecta todos los [class*="text-white"] en hijos     */
+.section-ivory [class~="text-white"] {
+  color: var(--color-foreground-dark) !important;
+}
+.section-ivory [class~="text-white\/90"],
+.section-ivory [class~="text-white\/80"],
+.section-ivory [class~="text-white\/70"],
+.section-ivory [class~="text-white\/60"],
+.section-ivory [class~="text-white\/50"],
+.section-ivory [class~="text-white\/40"],
+.section-ivory [class~="text-white\/30"],
+.section-ivory [class~="text-white\/20"],
+.section-ivory [class~="text-white\/10"] {
+  color: var(--color-foreground-dark) !important;
+  opacity: 0.65;
+}
+
+/* → TOKENS CSS VAR: Los que usan var(--color-foreground) */
+.section-ivory [class*="text-[var(--color-foreground)]"],
+.section-ivory [class~="text-foreground"] {
+  color: var(--color-foreground-dark);
+}
+.section-ivory [class*="text-[var(--color-muted-foreground)]"] {
+  color: var(--color-foreground-dark);
+  opacity: 0.58;
+}
+
+/* → EL ORO NUNCA CAMBIA: primary siempre es dorado    */
+.section-ivory [class*="text-[var(--color-primary)]"],
+.section-ivory [class~="text-primary"] {
+  color: var(--color-primary) !important;
+}
+
+/* → BORDES: Invertir borders oscuros a claros         */
+.section-ivory [class~="border-border"],
+.section-ivory [class*="border-[var(--color-border)]"] {
+  border-color: var(--color-border-light);
+}
+.section-ivory [class~="border-white\/5"],
+.section-ivory [class~="border-white\/10"],
+.section-ivory [class~="border-white\/20"] {
+  border-color: rgba(49, 43, 43, 0.08) !important;
+}
+
+/* → SUPERFICIES DE CARDS sobre Ivory                 */
+/* ServiceCard y similares: bg-[var(--color-secondary)]/30 */
+.section-ivory [class*="bg-[var(--color-secondary)]"] {
+  background-color: rgba(49, 43, 43, 0.06) !important;
+}
+/* ServiceCard hover: bg-[var(--color-secondary)] puro */
+.section-ivory [class~="hover:bg-[var(--color-secondary)]"]:hover {
+  background-color: rgba(49, 43, 43, 0.10) !important;
+}
+/* Dropdown share menu sobre Ivory */
+.section-ivory [class*="bg-[var(--color-background)]"]:not(section):not(div[class*="section"]) {
+  background-color: var(--color-ivory) !important;
+  border-color: var(--color-border-light) !important;
+}
+/* Inputs/muted bg */
+.section-ivory [class*="bg-[var(--color-muted)]"] {
+  background-color: rgba(49, 43, 43, 0.08) !important;
+}
+
+/* → GRADIENTES de imagen (CutCard, ServiceCard)       */
+/* El gradiente negro sobre fotos queda igual — es un overlay, no texto */
+
+/* → SectionHeader: fix de heading via prop light      */
+/* (SectionHeader ya soporta light=true, pero con CSS  */
+/*  no necesitamos pasar la prop — el override aplica) */
+.section-ivory .font-display {
+  color: var(--color-foreground-dark);
 }

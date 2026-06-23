@@ -5,16 +5,19 @@ export const BARBARO_INFO = {
   name: "Estilo Bárbaro | Barbería Premium en Huancayo - Donde el Estilo alcanza la Elegancia",
   shortName: "Estilo Bárbaro",
   description: "La barbería premium líder en Huancayo. Expertos en cortes clásicos de autor, afeitado tradicional con navaja y grooming masculino de lujo. Un santuario de distinción en El Tambo para el caballero que exige excelencia.",
-  address: "Psj. 03 de octubre, El Tambo, Huancayo (Frente al Parque de los Sombreros)",
-  reference: "Psj 03 de octubre El Tambo - Hyo Ref. frente al parque de los sombreros",
+  address: "Jr. Sebastián Lorente, Pasaje 03 de Octubre Nº 232, El Tambo, Huancayo",
+  reference: "Frente al Parque de los Sombreros, El Tambo - Huancayo",
   phone: "+51 960 659 183",
   email: "estilobarbarosuite@gmail.com",
+  website: "https://estilobarbaro.com",
   coordinates: {
     lat: -12.056,
     lng: -75.213
   },
   social: {
-    facebook: "https://www.facebook.com/share/1DmsBSDKTW/?mibextid=wwXIfr",
-    tiktok: "https://www.tiktok.com/@estilo_barbaro?_r=1&_t=ZS-96MmpWIARs5"
+    facebook: "https://www.facebook.com/estilo.barbaro",
+    instagram: "https://www.instagram.com/estilo_barbaro/",
+    tiktok: "https://www.tiktok.com/@estilo_barbaro",
   }
 };
+
