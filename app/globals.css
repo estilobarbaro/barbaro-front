@@ -71,6 +71,16 @@
   }
 }
 
+/* ── KEYFRAMES ── */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* ══════════════════════════════════════════════════════
    SISTEMA DE MODOS DE SECCIÓN — Manual de Marca Bárbaro 2026
    Tres modos: Espresso · Graphite · Ivory

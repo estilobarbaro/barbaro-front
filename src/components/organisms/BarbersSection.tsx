@@ -6,9 +6,27 @@ import { motion } from 'framer-motion'
 import { fadeUp, staggerContainer } from '@/src/lib/motion'
 
 const BARBERS = [
-  { name: 'Carlos R.', specialty: 'Cortes clásicos & fade', imageSrc: 'https://picsum.photos/seed/barber1/400/500?grayscale', instagram: 'estilobarbaro_carlos' },
-  { name: 'Miguel A.', specialty: 'Barba & diseño', imageSrc: 'https://picsum.photos/seed/barber2/400/500?grayscale' },
-  { name: 'Luis P.', specialty: 'Estilos modernos', imageSrc: 'https://picsum.photos/seed/barber3/400/500?grayscale' },
+  {
+    name: 'Carlos R.',
+    specialty: 'Cortes clásicos & fade',
+    bio: 'Maestro del fade limpio y el corte con identidad. 6 años afilando su arte en Huancayo.',
+    imageSrc: 'https://picsum.photos/seed/barber1/400/500?grayscale',
+    instagram: 'estilo_barbaro'
+  },
+  {
+    name: 'Miguel A.',
+    specialty: 'Barba & diseño artesanal',
+    bio: 'Especialista en perfilado de barba con navaja tradicional. Precisión de relojero.',
+    imageSrc: 'https://picsum.photos/seed/barber2/400/500?grayscale',
+    instagram: 'estilo_barbaro'
+  },
+  {
+    name: 'Luis P.',
+    specialty: 'Estilos modernos & color',
+    bio: 'Explorador de tendencias. Lleva lo último de Lima y CDMX a las sillas del clan.',
+    imageSrc: 'https://picsum.photos/seed/barber3/400/500?grayscale',
+    instagram: 'estilo_barbaro'
+  },
 ]
 
 export function BarbersSection() {
