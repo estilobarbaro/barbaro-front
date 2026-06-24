@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run sync-social && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "update-image-dims": "node scripts/update-image-dims.mjs",
-    "sync-social": "node scripts/sync-social.mjs"
+    "update-image-dims": "node scripts/update-image-dims.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
