@@ -96,12 +96,12 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Columna Derecha: Mapa (Street View) */}
+          {/* Columna Derecha: Mapa Oficial Google Maps */}
           <div className="lg:col-span-7 w-full h-full min-h-[400px] lg:min-h-[500px] relative">
             <div className="absolute inset-0 border border-primary/20 p-2 bg-secondary/5">
               <div className="relative w-full h-full overflow-hidden grayscale contrast-125 hover:grayscale-0 transition-all duration-700">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!4v1780363725756!6m8!1m7!1sActrd8lwSh26zoPwyF2Q7A!2m2!1d-12.05617589176119!2d-75.21325286053849!3f86.71837392245725!4f-5.686198214101353!5f0.7820865974627469" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.8171338399475!2d-75.2132539!3d-12.056099699999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910e97c7832d8455%3A0x7a11306d275b2ce4!2sEstilo%20B%C3%A1rbaro!5e0!3m2!1ses-419!2spe!4v1782260164441!5m2!1ses-419!2spe" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 

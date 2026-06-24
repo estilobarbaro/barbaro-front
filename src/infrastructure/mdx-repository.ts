@@ -4,10 +4,12 @@ import matter from 'gray-matter';
 import { Service, ServiceCategory } from '@/src/domain/service';
 import { Partner } from '@/src/domain/partner';
 import { Cut } from '@/src/domain/cut';
+import { SocialPost } from '@/src/domain/social';
 
 const SERVICES_PATH = path.join(process.cwd(), 'src/content/services');
 const PARTNERS_PATH = path.join(process.cwd(), 'src/content/partners');
 const GALLERY_PATH  = path.join(process.cwd(), 'src/content/gallery');
+const SOCIAL_PATH   = path.join(process.cwd(), 'src/content/social');
 
 // ─────────────────────────────────────────────────────────────
 // SERVICES
@@ -157,4 +159,41 @@ export const getPartners = (): Partner[] => {
     });
 
   return partners.sort((a, b) => a.order - b.order);
+};
+
+// ─────────────────────────────────────────────────────────────
+// SOCIAL FEED
+// ─────────────────────────────────────────────────────────────
+
+export const getSocialFeed = (): SocialPost[] => {
+  if (!fs.existsSync(SOCIAL_PATH)) return [];
+
+  const fileNames = fs.readdirSync(SOCIAL_PATH);
+  const posts: SocialPost[] = fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '');
+      const fullPath = path.join(SOCIAL_PATH, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data, content } = matter(fileContents);
+
+      return {
+        slug,
+        network: data.network,
+        url: data.url,
+        username: data.username,
+        avatarUrl: data.avatarUrl,
+        imageUrl: data.imageUrl,
+        caption: data.caption,
+        likesCount: data.likesCount,
+        commentsCount: data.commentsCount,
+        rating: data.rating,
+        authorName: data.authorName,
+        date: data.date,
+        order: data.order || 0,
+        content,
+      } as SocialPost;
+    });
+
+  return posts.sort((a, b) => a.order - b.order);
 };

@@ -11,8 +11,8 @@ export const BARBARO_INFO = {
   email: "estilobarbarosuite@gmail.com",
   website: "https://estilobarbaro.com",
   coordinates: {
-    lat: -12.056,
-    lng: -75.213
+    lat: -12.0560996,
+    lng: -75.2132539
   },
   social: {
     facebook: "https://www.facebook.com/estilo.barbaro",
