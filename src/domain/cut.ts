@@ -3,6 +3,7 @@
 import type { ImageFocalPoint } from './image'
 
 export type CutCategory = 'Fade' | 'Clásico' | 'Barba' | 'Moderno' | 'Taper'
+export type ImageOrientation = 'portrait' | 'landscape' | 'square'
 
 export interface Cut {
   slug: string
@@ -12,6 +13,9 @@ export interface Cut {
   imageSrc: string
   imageAlt: string
   imageFocalPoint: ImageFocalPoint
+  imageWidth: number
+  imageHeight: number
+  imageOrientation: ImageOrientation
   featured: boolean
   order: number
   content?: string

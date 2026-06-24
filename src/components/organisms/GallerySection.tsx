@@ -50,7 +50,7 @@ export function GallerySection({ cuts }: GallerySectionProps) {
           variants={staggerContainer}
           initial="initial"
           animate="animate"
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5 items-start"
         >
           {filtered.map((cut) => (
             <motion.div key={cut.slug} variants={fadeUp}>
@@ -58,7 +58,9 @@ export function GallerySection({ cuts }: GallerySectionProps) {
                 name={cut.name}
                 imageSrc={cut.imageSrc}
                 imageAlt={cut.imageAlt}
-                imageFocalPoint={cut.imageFocalPoint}
+                imageWidth={cut.imageWidth}
+                imageHeight={cut.imageHeight}
+                imageOrientation={cut.imageOrientation}
                 category={cut.category}
               />
             </motion.div>

@@ -55,6 +55,9 @@ export function ServicesSection({ serviceCategories }: ServicesSectionProps) {
                     imageSrc={service.image ?? '/images/cuts/corte-clasico-degradado.webp'}
                     imageAlt={service.imageAlt}
                     imageFocalPoint={service.imageFocalPoint}
+                    imageWidth={service.imageWidth}
+                    imageHeight={service.imageHeight}
+                    imageOrientation={service.imageOrientation}
                     features={service.features}
                     isPremium={service.isPremium}
                   />
@@ -90,6 +93,9 @@ export function ServicesSection({ serviceCategories }: ServicesSectionProps) {
                     imageSrc={service.image ?? '/images/cuts/corte-taper-fade-basico.webp'}
                     imageAlt={service.imageAlt}
                     imageFocalPoint={service.imageFocalPoint}
+                    imageWidth={service.imageWidth}
+                    imageHeight={service.imageHeight}
+                    imageOrientation={service.imageOrientation}
                     features={service.features}
                     isPremium={service.isPremium}
                   />
