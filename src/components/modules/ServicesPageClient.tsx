@@ -63,9 +63,14 @@ export default function ServicesPageClient({ categories }: ServicesPageProps) {
                   name={service.title}
                   description={service.description}
                   price={service.price}
-                  imageSrc={`https://picsum.photos/seed/${service.slug}/800/600?grayscale`}
+                  imageSrc={service.image || `/service-standard.webp`}
+                  imageAlt={service.imageAlt}
+                  imageFocalPoint={service.imageFocalPoint}
+                  imageWidth={service.imageWidth}
+                  imageHeight={service.imageHeight}
+                  imageOrientation={service.imageOrientation}
                   features={service.features}
-                  isPremium={service.price.toString().includes('80') || service.price.toString().includes('60') || service.price.toString().includes('99')} 
+                  isPremium={service.isPremium}
                 />
               ))}
             </div>

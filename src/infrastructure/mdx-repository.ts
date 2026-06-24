@@ -153,6 +153,10 @@ export const getPartners = (): Partner[] => {
         brandColor: data.brandColor,
         order: data.order || 0,
         content,
+        instagram: data.instagram,
+        phone: data.phone,
+        address: data.address,
+        followers: data.followers,
       } as Partner;
     });
 

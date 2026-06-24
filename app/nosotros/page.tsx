@@ -12,10 +12,11 @@ export default function AboutPage() {
       <section className="max-w-6xl mx-auto px-4 lg:px-6 mb-16">
         <div className="relative w-full aspect-[21/9] overflow-hidden mb-8 border border-primary/10">
           <Image 
-            src="https://picsum.photos/seed/barbaro-about/1920/1080?grayscale" 
-            alt="Interior de Estilo Bárbaro" 
+            src="/images/hero/fondo-barberia.webp" 
+            alt="Interior de Estilo Bárbaro — Barber Suite El Tambo" 
             fill 
-            className="object-cover contrast-125 brightness-75"
+            className="object-cover contrast-110 brightness-75"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
           <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
@@ -47,10 +48,10 @@ export default function AboutPage() {
           <div className="relative aspect-square border border-primary/10 p-4 bg-secondary/5">
             <div className="relative w-full h-full overflow-hidden">
               <Image 
-                src="https://picsum.photos/seed/barbaro-craft/1000/1000?grayscale" 
-                alt="El Arte de la Barbería" 
+                src="/hero-barbaro.webp" 
+                alt="El Arte de la Barbería — Estilo Bárbaro" 
                 fill 
-                className="object-cover contrast-110 hover:scale-105 transition-transform duration-[2s]"
+                className="object-contain hover:scale-105 transition-transform duration-[2s]"
               />
             </div>
             {/* Aesthetic Corner Acent */}

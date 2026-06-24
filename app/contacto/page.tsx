@@ -204,14 +204,14 @@ export default function ContactPage() {
                </div>
             </div>
 
-            {/* Aesthetic Visual */}
-            <div className="relative aspect-[16/5] overflow-hidden grayscale opacity-30 border border-white/5">
+            <div className="relative aspect-[16/5] overflow-hidden border border-white/5">
               <Image 
-                src="https://picsum.photos/seed/barbaro-tools/800/300?grayscale" 
-                alt="Herramientas Bárbaro" 
+                src="/images/hero/fondo-barberia.webp" 
+                alt="Interior Estilo Bárbaro — Barber Suite" 
                 fill 
-                className="object-cover"
+                className="object-cover object-center brightness-50 contrast-110"
               />
+              <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent" />
             </div>
           </div>
 

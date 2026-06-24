@@ -11,4 +11,9 @@ export interface Partner {
   brandColor?: string;
   order: number;
   content?: string;
+  // Optional social/contact metadata
+  instagram?: string;
+  phone?: string;
+  address?: string;
+  followers?: number;
 }

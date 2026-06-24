@@ -5,7 +5,7 @@ import { Partner } from "@/src/domain/partner";
 import { SectionHeader } from "@/src/components/molecules/SectionHeader";
 import { PartnerLogo } from "@/src/components/atoms/PartnerLogo";
 import { CTASection } from "@/src/components/organisms/CTASection";
-import { ArrowRight, ExternalLink, Award, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, ExternalLink, Award, ShieldCheck, Zap, MapPin, Phone, AtSign } from "lucide-react";
 import { BARBARO_INFO } from "@/src/lib/constants";
 
 interface PartnersPageClientProps {
@@ -129,8 +129,13 @@ export function PartnersPageClient({ partners }: PartnersPageClientProps) {
                   <PartnerLogo partner={partner} />
                   <div className="space-y-2">
                     <h4 className="text-xl font-display text-[var(--color-foreground)] uppercase tracking-tight">{partner.name}</h4>
+                    {partner.followers && (
+                      <span className="inline-block text-[9px] font-bold text-[var(--color-foreground)]/40 uppercase tracking-widest">
+                        {partner.followers.toLocaleString()} seguidores
+                      </span>
+                    )}
                     {partner.benefit && (
-                      <span className="inline-block text-[9px] font-bold text-[var(--color-primary)] uppercase tracking-widest bg-[var(--color-primary)]/5 px-2 py-0.5 rounded border border-[var(--color-primary)]/10">
+                      <span className="inline-block text-[9px] font-bold text-[var(--color-primary)] uppercase tracking-widest bg-[var(--color-primary)]/5 px-2 py-0.5 rounded border border-[var(--color-primary)]/10 ml-2">
                         Beneficio Exclusivo
                       </span>
                     )}
@@ -138,6 +143,39 @@ export function PartnersPageClient({ partners }: PartnersPageClientProps) {
                   <p className="font-sans text-xs text-[var(--color-muted-foreground)] leading-relaxed line-clamp-3">
                     {partner.description}
                   </p>
+
+                  {/* Contact / Social Info */}
+                  {(partner.instagram || partner.phone || partner.address) && (
+                    <div className="w-full space-y-2 border-t border-[var(--color-border)]/30 pt-4">
+                      {partner.instagram && (
+                        <a
+                          href={`https://instagram.com/${partner.instagram}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-[10px] text-[var(--color-foreground)]/50 hover:text-[var(--color-primary)] transition-colors justify-center"
+                        >
+                          <AtSign size={11} />
+                          <span className="font-mono">@{partner.instagram}</span>
+                        </a>
+                      )}
+                      {partner.phone && (
+                        <a
+                          href={`tel:${partner.phone.replace(/\s/g, '')}`}
+                          className="flex items-center gap-2 text-[10px] text-[var(--color-foreground)]/50 hover:text-[var(--color-primary)] transition-colors justify-center"
+                        >
+                          <Phone size={11} />
+                          <span>{partner.phone}</span>
+                        </a>
+                      )}
+                      {partner.address && (
+                        <p className="flex items-start gap-2 text-[10px] text-[var(--color-foreground)]/40 justify-center leading-tight">
+                          <MapPin size={11} className="mt-0.5 shrink-0" />
+                          <span>{partner.address}</span>
+                        </p>
+                      )}
+                    </div>
+                  )}
+
                   {partner.url && (
                     <a 
                       href={partner.url} 
